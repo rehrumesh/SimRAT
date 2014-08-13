@@ -1,0 +1,21 @@
+module SimRATApp{
+	struct Image{
+		sequence <octet> img;
+	};
+	struct SimRATFile{
+		string fileName;
+		sequence <octet> file;
+	};
+	interface SimRAT{
+		Image getScreenshot();
+		void mouseMove(in long x, in long y);
+		void mousePress(in long x, in long y, in long button);
+		void mouseRelease(in long x, in long y, in long button);
+		void keyPress(in long keyCode);
+		void keyReleased(in long keyCode);
+		void uploadFileToServer(in SimRATFile inFile);
+		SimRATFile downloadFileFromServer(in string fPath);
+		oneway void shutdown();
+		
+	};
+};
